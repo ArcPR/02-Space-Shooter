@@ -9,11 +9,14 @@ var nose = Vector2(0,-60)
 
 var health = 100.0
 
+onready var Bullet = load("res://Player/Bullet.tscn")
+onready var Explosion = load("res://Effects/Explosion.tscn")
+var Effects = null
 
 func _ready():
 	pass
 
-func _phsyics_process(_delta):
+func _physics_process(_delta):
 	velocity += get_input()*speed
 	velocity = velocity.normalized() * clamp(velocity.length(), 0, max_speed)
 	velocity = move_and_slide(velocity, Vector2.ZERO)
@@ -25,17 +28,32 @@ func get_input():
 	$Exhaust.hide()
 	if Input.is_action_pressed("up"):
 		$Exhaust.show()
-		dir += Vector2(0, -1)
+		dir += Vector2(0,-1)
 	if Input.is_action_pressed("left"):
 		rotation_degrees -= rot_speed
 	if Input.is_action_pressed("right"):
 		rotation_degrees += rot_speed
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
 	return dir.rotated(rotation)
+
+func shoot():
+	Effects = get_node_or_null("/root/Game/Effects")
+	if Effects != null:
+		var bullet = Bullet.instance()
+		Effects.add_child(bullet)
+		bullet.rotation = rotation
+		bullet.global_position = global_position + nose.rotated(rotation)
 
 
 func damage(d):
 	health -= d 
 	if health <= 0:
+		Effects = get_node_or_null("/root/Game/Effects")
+		if Effects != null:
+			var explosion = Explosion.instance()
+			explosion.global_position = global_position
+			Effects.add_child(explosion)
 		queue_free()
 		
 
