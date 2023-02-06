@@ -1,13 +1,19 @@
 # 02 Space Shooter
 
-Context and date
+Made for BL-MSCH-C220 (class at Indiana University), created 2/5/2023.
 
-Description
+A simple space shooter
 
 ## Implementation
+2D, keyboard controlled ship that can shoot at enemies
 
 ## References
+https://opengameart.org/content/explosion-sheet
+https://kenney.nl/assets/space-shooter-redux
+https://kenney.nl/assets/simple-space
 
 ## Future Development
+None
 
 ## Created by
+Taylor Braunsdorf
