@@ -16,3 +16,9 @@ polygon = PoolVector2Array( 5, -24.2, 5, -19, 10.5, 2.1, 26, 7.6, 26, 10.6, 28.5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PoolVector2Array( 0, -38, -44, 31, 42, 31 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
