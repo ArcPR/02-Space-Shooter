@@ -9,7 +9,9 @@ A simple space shooter
 
 ## References
 https://opengameart.org/content/explosion-sheet
+
 https://kenney.nl/assets/space-shooter-redux
+
 https://kenney.nl/assets/simple-space
 
 ## Future Development
